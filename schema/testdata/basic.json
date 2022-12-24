@@ -1,0 +1,102 @@
+[
+ {
+  "mode": "REQUIRED",
+  "name": "bool",
+  "type": "BOOLEAN"
+ },
+ {
+  "name": "nullable_bool",
+  "type": "BOOLEAN"
+ },
+ {
+  "mode": "REQUIRED",
+  "name": "int",
+  "type": "INTEGER"
+ },
+ {
+  "name": "nullable_int",
+  "type": "INTEGER"
+ },
+ {
+  "mode": "REQUIRED",
+  "name": "long",
+  "type": "INTEGER"
+ },
+ {
+  "name": "nullable_long",
+  "type": "INTEGER"
+ },
+ {
+  "mode": "REQUIRED",
+  "name": "float",
+  "type": "FLOAT"
+ },
+ {
+  "name": "nullable_float",
+  "type": "FLOAT"
+ },
+ {
+  "mode": "REQUIRED",
+  "name": "double",
+  "type": "FLOAT"
+ },
+ {
+  "name": "nullable_double",
+  "type": "FLOAT"
+ },
+ {
+  "mode": "REQUIRED",
+  "name": "bytes",
+  "type": "BYTES"
+ },
+ {
+  "name": "nullable_bytes",
+  "type": "BYTES"
+ },
+ {
+  "mode": "REQUIRED",
+  "name": "string",
+  "type": "STRING"
+ },
+ {
+  "name": "nullable_string",
+  "type": "STRING"
+ },
+ {
+  "mode": "REPEATED",
+  "name": "array",
+  "type": "INTEGER"
+ },
+ {
+  "mode": "REPEATED",
+  "name": "map",
+  "type": "INTEGER"
+ },
+ {
+  "mode": "REQUIRED",
+  "name": "timestamp",
+  "type": "TIMESTAMP"
+ },
+ {
+  "name": "nullable_timestamp",
+  "type": "TIMESTAMP"
+ },
+ {
+  "mode": "REQUIRED",
+  "name": "date",
+  "type": "DATE"
+ },
+ {
+  "name": "nullable_date",
+  "type": "DATE"
+ },
+ {
+  "mode": "REQUIRED",
+  "name": "time",
+  "type": "TIME"
+ },
+ {
+  "name": "nullable_time",
+  "type": "TIME"
+ }
+]
