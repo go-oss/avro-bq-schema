@@ -15,6 +15,10 @@ const (
 	name = "avro-bq-schema"
 )
 
+var (
+	errInvalidArgument = errors.New("invalid argument")
+)
+
 func main() {
 	var err error
 	defer func() {
@@ -38,8 +42,8 @@ func main() {
 	}
 	files := cmd.Args()
 
-	if len(files) <= 0 {
-		err = errors.New("invalid argument")
+	if len(files) == 0 {
+		err = errInvalidArgument
 		log.Println(err)
 		return
 	}
