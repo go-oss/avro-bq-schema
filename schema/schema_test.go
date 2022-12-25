@@ -23,10 +23,12 @@ var (
 func TestConvert(t *testing.T) {
 	t.Parallel()
 	tests := []struct {
-		name string
+		name   string
+		indent int
 	}{
 		{
-			name: "basic",
+			name:   "basic",
+			indent: 2,
 		},
 	}
 	for _, tt := range tests {
@@ -40,7 +42,7 @@ func TestConvert(t *testing.T) {
 			require.NoError(t, err)
 			bq, err := Convert(avroSchema)
 			require.NoError(t, err)
-			got, err := bq.ToJSONFields()
+			got, err := ToJSON(bq, tt.indent)
 			require.NoError(t, err)
 			assert.Equal(t, string(bqSchema), string(got))
 		})
