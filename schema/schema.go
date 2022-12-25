@@ -1,7 +1,10 @@
 package schema
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
+	"strings"
 
 	"cloud.google.com/go/bigquery"
 	"github.com/actgardner/gogen-avro/v10/parser"
@@ -106,4 +109,26 @@ func typeMapping(s *bigquery.FieldSchema, avroType schema.AvroType) {
 		}
 		return
 	}
+}
+
+func ToJSON(bqSchema bigquery.Schema, indent int) ([]byte, error) {
+	data, err := bqSchema.ToJSONFields()
+	if err != nil {
+		return nil, fmt.Errorf("bqSchema.ToJSONFields: %w", err)
+	}
+
+	dst := new(bytes.Buffer)
+	if indent == 0 {
+		if err := json.Compact(dst, data); err != nil {
+			return nil, fmt.Errorf("json.Compact: %w", err)
+		}
+	} else {
+		err := json.Indent(dst, data, "", strings.Join(make([]string, indent+1), " "))
+		if err != nil {
+			return nil, fmt.Errorf("json.Indent: %w", err)
+		}
+	}
+	dst.WriteRune('\n')
+
+	return dst.Bytes(), nil
 }
