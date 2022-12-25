@@ -7,12 +7,14 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/go-oss/avro-bq-schema/schema"
 )
 
 const (
-	name = "avro-bq-schema"
+	name          = "avro-bq-schema"
+	defaultIndent = 2
 )
 
 var (
@@ -29,11 +31,18 @@ func main() {
 
 	log.SetFlags(0)
 
+	var indent int
 	cmd := flag.NewFlagSet("", flag.ExitOnError)
-	defaultUsage := cmd.Usage
+	cmd.IntVar(&indent, "indent", defaultIndent, "output JSON indent size")
 	cmd.Usage = func() {
-		defaultUsage()
-		fmt.Fprintf(cmd.Output(), "  %s [file]\n", name)
+		b := new(strings.Builder)
+		fmt.Fprintln(b, "Usage:")
+		fmt.Fprintf(b, "  %s [file]\n", name)
+		b.WriteRune('\n')
+		fmt.Fprintln(b, "Flags:")
+		//nolint:errcheck
+		io.WriteString(cmd.Output(), b.String())
+		cmd.PrintDefaults()
 	}
 	err = cmd.Parse(os.Args[1:])
 	if err != nil {
@@ -67,11 +76,15 @@ func main() {
 		return
 	}
 
-	j, err := bqSchema.ToJSONFields()
+	dst, err := schema.ToJSON(bqSchema, indent)
 	if err != nil {
-		log.Println("bqSchema.ToJSONFields:", err)
+		log.Println("schema.ToJSON:", err)
 		return
 	}
 
-	fmt.Println(string(j))
+	_, err = io.WriteString(os.Stdout, string(dst))
+	if err != nil {
+		log.Println("io.WriteString:", err)
+		return
+	}
 }
