@@ -3,7 +3,7 @@ module github.com/go-oss/avro-bq-schema
 go 1.19
 
 require (
-	cloud.google.com/go/bigquery v1.54.0
+	cloud.google.com/go/bigquery v1.55.0
 	github.com/actgardner/gogen-avro/v10 v10.2.1
 	github.com/stretchr/testify v1.8.4
 )
