@@ -6,7 +6,7 @@ issues:
     - linters:
         - exhaustivestruct
         - errcheck
-        - goerr113
+        - err113
         - wrapcheck
         - gochecknoglobals
       path: _test\.go$
@@ -17,31 +17,15 @@ linters-settings:
   gocritic:
     enabled-checks:
       - appendCombine
-      - argOrder
-      - assignOp
-      - badCall
-      - badCond
       - boolExprSimplify
       - builtinShadow
-      - captLocal
-      - caseOrder
-      - codegenComment
       - commentedOutCode
       - commentedOutImport
-      - defaultCaseOrder
-      - deprecatedComment
       - docStub
-      - dupArg
-      - dupBranchBody
-      - dupCase
       - dupImport
-      - dupSubExpr
-      - elseif
       - emptyFallthrough
       - emptyStringTest
       - equalFold
-      - flagDeref
-      - flagName
       - hexLiteral
       - hugeParam
       - importShadow
@@ -49,28 +33,18 @@ linters-settings:
       - initClause
       - methodExprCall
       - nestingReduce
-      - newDeref
       - nilValReturn
       - octalLiteral
-      - offBy1
       - paramTypeCombine
       - ptrToRefParam
       - rangeExprCopy
       - rangeValCopy
-      - regexpMust
-      - sloppyLen
       - sloppyReassign
       - stringXbytes
-      - switchTrue
       - typeAssertChain
-      - typeSwitchVar
       - typeUnparen
-      - underef
       - unnecessaryBlock
-      - unslice
-      - valSwap
       - weakCond
-      - wrapperFunc
       - yodaStyleExpr
 
 linters:
@@ -84,10 +58,10 @@ linters:
     - goconst
     - gocritic
     - gocyclo
-    - goerr113
+    - err113
     - goimports
     - gci
-    - gomnd
+    - mnd
     - gosimple
     - govet
     - ineffassign
